@@ -11,6 +11,11 @@ const Cliente = {
         return rows[0];
     },
 
+    buscarPorEmail: async (email) => {
+        const [rows] = await pool.query('SELECT id, nome, email, saldo, senha, tipo_usuario FROM clientes WHERE email = ?', [email]);
+        return rows[0];
+    },
+
     buscarPorEmailESenha: async (email, senha) => {
         const [rows] = await pool.query('SELECT id, nome, email, saldo, tipo_usuario FROM clientes WHERE email = ? AND senha = ?', [email, senha]);
         return rows[0];
@@ -26,7 +31,6 @@ const Cliente = {
         return resultado.affectedRows;
     },
 
-    // NOVA FUNÇÃO: Para o cliente editar o próprio perfil (Nome e Senha)
     atualizarPerfil: async (id, nome, senha) => {
         const [resultado] = await pool.query('UPDATE clientes SET nome = ?, senha = ? WHERE id = ?', [nome, senha, id]);
         return resultado.affectedRows;
