@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Cadastro from './pages/Cadastro';
+import Sobre from './pages/Sobre';
+
 import ClienteHome from './pages/ClienteHome';
 import Cardapio from './pages/Cardapio';
 import Extrato from './pages/Extrato';
@@ -17,10 +19,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rotas de Autenticação */}
+        {/* Rotas de Autenticação e Públicas */}
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-
+        <Route path="/sobre" element={<Sobre />} />
         {/* Rotas do Cliente */}
         <Route path="/home" element={<ClienteHome />} />
         <Route path="/cardapio" element={<Cardapio />} />
