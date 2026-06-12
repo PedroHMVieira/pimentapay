@@ -12,8 +12,10 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-pool.getConnection()
-    .then(() => console.log('✅ Conectado ao banco pimentapay na porta 3306!'))
-    .catch((err) => console.error('❌ Erro ao conectar no banco:', err.message));
+if (process.env.NODE_ENV !== 'test') {
+    pool.getConnection()
+        .then(() => console.log('✅ Conectado ao banco pimentapay na porta 3306!'))
+        .catch((err) => console.error('❌ Erro ao conectar no banco:', err.message));
+}
 
 module.exports = pool;

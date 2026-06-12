@@ -23,14 +23,19 @@ export default function Header({ titulo }) {
             }}>
                 <Link to="/home" style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
 
-                    { }
                     <img
                         src={logoPimenta}
                         alt="Logo PimentaPay"
                         style={{
-                            width: '45px',
-                            height: '45px',
-                            objectFit: 'contain'
+                            width: '60px',
+                            height: '60px',
+                            objectFit: 'contain',
+
+                            filter: 'drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.4))',
+                            border: '2px solid white',
+                            borderRadius: '50%',
+                            padding: '4px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.1)'
                         }}
                     />
 
