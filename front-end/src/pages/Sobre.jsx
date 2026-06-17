@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function Sobre() {
+    const navigate = useNavigate();
+
     return (
         <div style={{
             display: 'flex',
@@ -38,6 +40,10 @@ export default function Sobre() {
                         font-weight: 600;
                         transition: background-color 0.2s;
                         margin-top: 20px;
+                        border: none;
+                        cursor: pointer;
+                        font-size: 16px;
+                        font-family: inherit;
                     }
                     .btn-voltar:hover {
                         background-color: #a93226;
@@ -91,9 +97,12 @@ export default function Sobre() {
                     <p style={{ color: '#777', fontSize: '14px', marginBottom: '15px' }}>
                         Desenvolvido com tecnologia Node.js, React.
                     </p>
-                    <Link to="/home" className="btn-voltar">
-                        Voltar para a Página Inicial
-                    </Link>
+                    <button
+                        onClick={() => navigate(-1)}
+                        className="btn-voltar"
+                    >
+                        Voltar
+                    </button>
                 </div>
 
             </main>

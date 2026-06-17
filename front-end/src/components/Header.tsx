@@ -5,7 +5,6 @@ export default function Header({ titulo }) {
     const usuarioStorage = localStorage.getItem('usuario');
     const usuarioLogado = usuarioStorage ? JSON.parse(usuarioStorage) : null;
 
-
     const isAdm = usuarioLogado?.tipo_usuario === 'admin';
 
     return (
@@ -69,7 +68,7 @@ export default function Header({ titulo }) {
             }}>
 
                 <h1 style={{ margin: 0, fontSize: '22px', fontWeight: 'bold' }}>
-                    <Link to="/home" style={{
+                    <Link to={isAdm ? "/admin" : "/home"} style={{
                         color: 'white',
                         textDecoration: 'none',
                         display: 'flex',
@@ -117,7 +116,6 @@ export default function Header({ titulo }) {
                         </svg>
                         Perfil
                     </Link>
-
 
                     {!isAdm && (
                         <Link to="/extrato" className="header-link">
