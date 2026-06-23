@@ -77,6 +77,9 @@ export default function Login() {
 
                 <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
 
+                    <input type="text" style={{ opacity: 0, position: 'absolute', height: 0, width: 0, zIndex: -1 }} />
+                    <input type="password" style={{ opacity: 0, position: 'absolute', height: 0, width: 0, zIndex: -1 }} />
+
                     {erro && (
                         <div style={{ backgroundColor: '#fadbd8', color: '#c0392b', padding: '10px', borderRadius: '8px', fontSize: '13px', fontWeight: 'bold' }}>
                             {erro}
@@ -96,6 +99,7 @@ export default function Login() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         style={inputStyle}
+                        autoComplete="off"
                     />
 
                     <input
@@ -105,6 +109,7 @@ export default function Login() {
                         onChange={(e) => setSenha(e.target.value)}
                         required
                         style={inputStyle}
+                        autoComplete="off"
                     />
 
                     <button

@@ -116,6 +116,7 @@ export default function Cadastro() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         style={inputStyle}
+                        autoComplete="off"
                     />
 
                     <input
@@ -125,6 +126,7 @@ export default function Cadastro() {
                         onChange={(e) => setSenha(e.target.value)}
                         required
                         style={inputStyle}
+                        autoComplete="new-password"
                     />
 
                     <input
