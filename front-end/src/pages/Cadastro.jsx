@@ -26,10 +26,9 @@ export default function Cadastro() {
         if (senha.length < 8) {
             return setErro('A senha deve ter pelo menos 8 caracteres.');
         }
-
         const telefoneLimpo = telefone.replace(/\D/g, '');
-        if (telefoneLimpo.length < 8) {
-            return setErro('O telefone deve ter pelo menos 8 dígitos.');
+        if (telefoneLimpo.length < 10 || telefoneLimpo.length > 11) {
+            return setErro('O telefone deve ter 10 (fixo) ou 11 (celular) dígitos com o DDD.');
         }
 
         try {
@@ -37,7 +36,7 @@ export default function Cadastro() {
                 nome,
                 email,
                 senha,
-                telefone
+                telefone: telefoneLimpo
             });
 
             setMensagem(resposta.data.mensagem);
@@ -86,7 +85,10 @@ export default function Cadastro() {
                     <p style={{ color: '#7f8c8d', margin: 0 }}>Crie sua conta agora</p>
                 </div>
 
-                <form onSubmit={handleCadastro} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <form onSubmit={handleCadastro} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+
+                    <input type="text" style={{ opacity: 0, position: 'absolute', height: 0, width: 0, zIndex: -1 }} />
+                    <input type="password" style={{ opacity: 0, position: 'absolute', height: 0, width: 0, zIndex: -1 }} />
 
                     {erro && (
                         <div style={{ backgroundColor: '#fadbd8', color: '#c0392b', padding: '10px', borderRadius: '8px', textAlign: 'center', fontSize: '14px', fontWeight: 'bold' }}>
@@ -131,9 +133,14 @@ export default function Cadastro() {
 
                     <input
                         type="text"
-                        placeholder="Telefone (com DDD)"
+                        placeholder="Telefone (com DDD - apenas números)"
                         value={telefone}
-                        onChange={(e) => setTelefone(e.target.value)}
+                        onChange={(e) => {
+                            const apenasNumeros = e.target.value.replace(/\D/g, '');
+                            if (apenasNumeros.length <= 11) {
+                                setTelefone(apenasNumeros);
+                            }
+                        }}
                         required
                         style={inputStyle}
                     />
