@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -23,6 +22,13 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando na porta ${PORT}`);
-});
+
+// Trava de segurança: só sobe a porta real se não for um teste automatizado
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, () => {
+        console.log(`🚀 Servidor rodando na porta ${PORT}`);
+    });
+}
+
+// Exporta o app para o Jest e o Supertest conseguirem acessar suas rotas internamente
+module.exports = app;

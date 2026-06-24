@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --forceExit --silent"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +17,7 @@
     "mysql2": "^3.22.3"
   },
   "devDependencies": {
-    "jest": "^30.4.2"
-  },
-  "scripts": {
-    "test": "jest --forceExit --silent"
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
   }
 }
